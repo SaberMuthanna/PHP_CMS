@@ -1,7 +1,9 @@
 <?php
-    include("../include/layout/header.php");
-    include("../include/functions.php");
+include("../include/layout/header.php");
+include("../include/functions.php");
+include("../include/connect.php");
 ?>
+
 <body>
     <!--=============================================================================================-->
     <!-- Fixed navbar -->
@@ -39,18 +41,23 @@
         </div>
     </nav>
     <!--=============================================================================================-->
-    <div class="container theme-showcase" role="main">
+    <div class="container" role="main">
 
         <!-- Main jumbotron for a primary marketing message or call to action -->
         <div class="jumbotron">
-            <h1>Admin Area</h1>
+            <h1>Manag content Area</h1>
             <p>This is control panal.</p>
+            <p>
+                <a type="button" class="btn btn-lg btn-danger" href="cms.php">Manage Contan</a>
+                <a type="button" class="btn btn-lg btn-primary" href="admin.php">Admins</a>
+                <a type="button" class="btn btn-lg btn-success" href="logout.php">Logout</a>
+            </p>
         </div>
     </div>
     <!--=============================================================================================-->
     <!--start fopter -->
     <?php
-        include("../include/layout/footer.php");
+    include("../include/layout/footer.php");
     ?>
     <!--end footer -->
 </body>

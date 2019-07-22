@@ -1,6 +1,7 @@
 <?php
     include("../include/layout/header.php");
     include("../include/functions.php");
+    include("../include/connect.php");
 ?>
 <body>
     <!--=============================================================================================-->
@@ -18,8 +19,8 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="cms.php">Manage Content</a></li>
-                    <li><a href="admin.php">Admin</a></li>
+                    <li><a href="cms.php">Manage Content</a></li>
+                    <li class="active"><a href="admin.php">Admin</a></li>
                     <li><a href="logout.php">Logout</a></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">admins Tool <span class="caret"></span></a>
