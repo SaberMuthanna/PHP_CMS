@@ -1,9 +1,12 @@
 <?php
-include("../include/layout/header.php");
-include("../include/functions.php");
-include("../include/connect.php");
+    include("../include/layout/header.php");
+    include("../include/functions.php");
+    include("../include/connect.php");
+    //================================================================
+    $query = "SELECT *  FROM `navbar` WHERE 1";
+    $result = mysqli_query($conn, $query);
+    if (mysqli_num_rows($result)> 0) {
 ?>
-
 <body>
     <!--=============================================================================================-->
     <!-- Fixed navbar -->
@@ -20,9 +23,14 @@ include("../include/connect.php");
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="cms.php">Manage Content</a></li>
-                    <li><a href="admin.php">Admin</a></li>
-                    <li><a href="logout.php">Logout</a></li>
+                    <?php
+                            while ($row = mysqli_fetch_assoc($result)) {
+                                echo "<li>"."<a >".$row["item_name"]."</a>"."</li>";
+                            }
+                        }
+                        mysqli_free_result($result);
+                    ?>
+                    <!--===================this dropdown ===============================-->
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">admins Tool <span class="caret"></span></a>
                         <ul class="dropdown-menu">
@@ -47,11 +55,6 @@ include("../include/connect.php");
         <div class="jumbotron">
             <h1>Manag content Area</h1>
             <p>This is control panal.</p>
-            <p>
-                <a type="button" class="btn btn-lg btn-danger" href="cms.php">Manage Contan</a>
-                <a type="button" class="btn btn-lg btn-primary" href="admin.php">Admins</a>
-                <a type="button" class="btn btn-lg btn-success" href="logout.php">Logout</a>
-            </p>
         </div>
     </div>
     <!--=============================================================================================-->
