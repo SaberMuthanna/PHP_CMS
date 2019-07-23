@@ -42,7 +42,6 @@
             text-align: center;
             margin-top: 30px;
         }
-
         .overlay a {
             padding: 8px;
             text-decoration: none;
