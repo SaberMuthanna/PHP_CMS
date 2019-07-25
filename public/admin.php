@@ -3,47 +3,92 @@ include("../include/layout/header.php");
 include("../include/functions.php");
 include("../include/connect.php");
 ?>
+<style type="text/css">
+    li {
+        display: block;
+    }
+</style>
+
 <body>
-    <!--=============================================================================================-->
-    <!-- Fixed navbar -->
-    <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="#">CMS</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a href="cms.php">Manage Content</a></li>
-                    <li class="active"><a href="admin.php">Admin</a></li>
-                    <li><a href="logout.php">Logout</a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">admins Tool <span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li class="active"><a href="cms.php">Manage Content</a></li>
-                            <li><a href="admin.php">Admin</a></li>
-                            <li><a href="logout.php">Logout</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li class="dropdown-header">Nav header</li>
-                            <li><a href="#">Separated link</a></li>
-                            <li><a href="#">One more separated link</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-            <!--/.nav-collapse -->
+    <!--===================This start Navbar===============================-->
+    <div id="myNav" class="overlay ">
+        <div class=" theme-showcase  nav">
+            <!-- Main jumbotron for a primary marketing message or call to action -->
+            MENU
         </div>
-    </nav>
-    <!--=============================================================================================-->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> &times; </a>
+        <div class="overlay-content ">
+            <ul class=" list-group col-md-4">
+                <li class="list-group-item active ">
+                    <a href="#">
+                        CMS
+                    </a>
+                </li>
+                <?php
+                $query = "SELECT * FROM `navbar` WHERE visible=1";
+                $result = mysqli_query($conn, $query);
+                if (mysqli_num_rows($result) > 0) {
+                    while ($row = mysqli_fetch_assoc($result)) {
+                        ?>
+
+                        <li class="list-group-item  ">
+                            <a href="cms.php?menu=<?php echo   mysqli_real_escape_string($conn, $row["id"]);  ?> ">
+                                <?php echo  mysqli_real_escape_string($conn, $row["item_name"]);   ?> </a>
+                            <?php
+                            $query1 = "SELECT * FROM `pages`  WHERE visible=1 AND `pages`.`item_name_id`= " . mysqli_real_escape_string($conn, $row["id"]);
+                            $result1 = mysqli_query($conn, $query1);
+                            if (mysqli_num_rows($result1) > 0) {
+                                ?>
+
+                                <?php
+                                while ($row1 = mysqli_fetch_assoc($result1)) {
+                                    ?>
+
+                                    <ul>
+                                        <li class="">
+                                            <a href=" cms.php?page=<?php echo   mysqli_real_escape_string($conn, $row1["id"]);  ?> ">
+                                                <h3>
+                                                    <?php echo  mysqli_real_escape_string($conn, $row1["page_name"]); ?>
+                                                </h3>
+
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                <?php
+                                }
+                            }
+
+
+                            ?>
+
+
+                        </li>
+
+                    <?php
+                    }
+                }
+                mysqli_free_result($result);
+                ?>
+            </ul>
+        </div>
+    </div>
+
+    <span style=" font-size:30px;cursor:pointer" onclick="openNav()">&#9776; NAVBAR MENU </span>
+    <script>
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+        }
+
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+    </script>
+    <!--===============================this end Navbar=========================-->
     <div class="container theme-showcase" role="main">
 
         <!-- Main jumbotron for a primary marketing message or call to action -->
-        <div class="jumbotron">
+        <div class= 'container'>
             <h1>Admin Area</h1>
             <p>This is control panal.</p>
             <p>

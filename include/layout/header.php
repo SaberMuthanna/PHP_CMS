@@ -35,11 +35,12 @@
             transition: 0.5s;
         }
 
-        .list-group{
+        .list-group {
             padding: 0px;
             margin: 0px;
         }
-         .theme-showcase {
+
+        .nav {
             padding: 10px;
             background: rebeccapurple;
             text-align: center;
