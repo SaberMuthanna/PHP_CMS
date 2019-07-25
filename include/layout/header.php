@@ -29,8 +29,8 @@
             z-index: 1;
             top: 0;
             left: 0;
-            background-color: #f1f1f1;
-            background-color: #0068b7;
+            background-color: #fff;
+            background-color: #fff;
             overflow-x: hidden;
             transition: 0.5s;
         }

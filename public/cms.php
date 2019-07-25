@@ -13,8 +13,8 @@ include("../include/connect.php");
     <div id="myNav" class="overlay">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> &times; </a>
         <div class="overlay-content">
-            <ul>
-                <li>
+            <ul class="list-group">
+                <li class="list-group-item active">
                     <a href="#">
                         CMS
                     </a>
@@ -25,7 +25,7 @@ include("../include/connect.php");
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         ?>
-                        <li>
+                        <li class="list-group-item active">
                             <a href="cms.php?menu=<?php echo   mysqli_real_escape_string($conn, $row["id"]);  ?> ">
                                 <?php echo  mysqli_real_escape_string($conn, $row["item_name"]);   ?> </a>
                             <?php
@@ -36,44 +36,44 @@ include("../include/connect.php");
                                 while ($row1 = mysqli_fetch_assoc($result1)) {
                                     ?>
                                     <ul>
-                                        <li><a href="cms.php?page=<?php echo   mysqli_real_escape_string($conn, $row1["id"]);  ?> ">
-                                                <h3><?php echo  mysqli_real_escape_string($conn, $row1["page_name"]);   ?> </h3>
-                                            </a></li>
-                                    </ul>
-                                <?php
-                                }
-                            }
+                                        <li class="list-group-item"> <a href=" cms.php?page=<?php echo   mysqli_real_escape_string($conn, $row1["id"]);  ?> ">
+                                                                <h3><?php echo  mysqli_real_escape_string($conn, $row1["page_name"]);   ?> </h3>
+                                                            </a></li>
+                                                    </ul>
+                                            <?php
+                                            }
+                                        }
 
 
-                            ?>
+                                        ?>
 
 
-                        </li>
+                                </li>
 
-                    <?php
+                        <?php
+                        }
                     }
-                }
-                mysqli_free_result($result);
-                ?>
+                    mysqli_free_result($result);
+                    ?>
             </ul>
         </div>
     </div>
-    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; NAVBAR</span>
-    <script>
-        function openNav() {
-            document.getElementById("myNav").style.width = "100%";
-        }
+    <span style=" font-size:30px;cursor:pointer" onclick="openNav()">&#9776; NAVBAR</span>
+                            <script>
+                                function openNav() {
+                                    document.getElementById("myNav").style.width = "100%";
+                                }
 
-        function closeNav() {
-            document.getElementById("myNav").style.width = "0%";
-        }
-    </script>
-    <!--===========================================================================-->
-    <!--start footer -->
-    <?php
-    include("../include/layout/footer.php");
-    ?>
-    <!--end footer -->
+                                function closeNav() {
+                                    document.getElementById("myNav").style.width = "0%";
+                                }
+                            </script>
+                            <!--===========================================================================-->
+                            <!--start footer -->
+                            <?php
+                            include("../include/layout/footer.php");
+                            ?>
+                            <!--end footer -->
 </body>
 
 </html>
