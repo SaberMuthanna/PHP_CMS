@@ -30,20 +30,33 @@
             top: 0;
             left: 0;
             background-color: #fff;
-            background-color: #fff;
+            background-color: ;
             overflow-x: hidden;
             transition: 0.5s;
         }
 
+        .list-group{
+            padding: 0px;
+            margin: 0px;
+        }
+         .theme-showcase {
+            padding: 10px;
+            background: rebeccapurple;
+            text-align: center;
+            font-size: 20px;
+            color: #fff;
+        }
+
         .overlay-content {
             position: relative;
-            top: 25%;
+            top: 0%;
             width: 100%;
             text-align: center;
-            margin-top: 30px;
+            margin-top: 0px;
         }
+
         .overlay a {
-            padding: 8px;
+            padding: 0px;
             text-decoration: none;
             font-size: 36px;
             color: #818181;
@@ -61,6 +74,14 @@
             top: 20px;
             right: 45px;
             font-size: 60px;
+        }
+
+        .m {
+            background-color: red;
+            padding: 0px 0px;
+            margin: 0px 0px;
+
+
         }
 
         @media screen and (max-height: 450px) {

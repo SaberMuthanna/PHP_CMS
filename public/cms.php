@@ -10,11 +10,18 @@ include("../include/connect.php");
 </style>
 
 <body>
-    <div id="myNav" class="overlay">
+
+    <div id="myNav" class="overlay ">
+        <div class=" theme-showcase ">
+            <!-- Main jumbotron for a primary marketing message or call to action -->
+
+            ماجمل ان تكون حيا بعد مماتك
+
+        </div>
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> &times; </a>
-        <div class="overlay-content">
-            <ul class="list-group">
-                <li class="list-group-item active">
+        <div class="overlay-content ">
+            <ul class=" list-group col-md-4">
+                <li class="list-group-item active ">
                     <a href="#">
                         CMS
                     </a>
@@ -25,55 +32,66 @@ include("../include/connect.php");
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         ?>
-                        <li class="list-group-item active">
+
+                        <li class="list-group-item  ">
                             <a href="cms.php?menu=<?php echo   mysqli_real_escape_string($conn, $row["id"]);  ?> ">
                                 <?php echo  mysqli_real_escape_string($conn, $row["item_name"]);   ?> </a>
                             <?php
                             $query1 = "SELECT * FROM `pages`  WHERE visible=1 AND `pages`.`item_name_id`= " . mysqli_real_escape_string($conn, $row["id"]);
                             $result1 = mysqli_query($conn, $query1);
                             if (mysqli_num_rows($result1) > 0) {
+                                ?>
 
+                                <?php
                                 while ($row1 = mysqli_fetch_assoc($result1)) {
                                     ?>
+
                                     <ul>
-                                        <li class="list-group-item"> <a href=" cms.php?page=<?php echo   mysqli_real_escape_string($conn, $row1["id"]);  ?> ">
-                                                                <h3><?php echo  mysqli_real_escape_string($conn, $row1["page_name"]);   ?> </h3>
-                                                            </a></li>
-                                                    </ul>
-                                            <?php
-                                            }
-                                        }
+                                        <li class="">
+                                            <a href=" cms.php?page=<?php echo   mysqli_real_escape_string($conn, $row1["id"]);  ?> ">
+                                                <h3>
+                                                    <?php echo  mysqli_real_escape_string($conn, $row1["page_name"]); ?>
+                                                </h3>
+
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                <?php
+                                }
+                            }
 
 
-                                        ?>
+                            ?>
 
 
-                                </li>
+                        </li>
 
-                        <?php
-                        }
+                    <?php
                     }
-                    mysqli_free_result($result);
-                    ?>
+                }
+                mysqli_free_result($result);
+                ?>
             </ul>
         </div>
     </div>
-    <span style=" font-size:30px;cursor:pointer" onclick="openNav()">&#9776; NAVBAR</span>
-                            <script>
-                                function openNav() {
-                                    document.getElementById("myNav").style.width = "100%";
-                                }
 
-                                function closeNav() {
-                                    document.getElementById("myNav").style.width = "0%";
-                                }
-                            </script>
-                            <!--===========================================================================-->
-                            <!--start footer -->
-                            <?php
-                            include("../include/layout/footer.php");
-                            ?>
-                            <!--end footer -->
+    <span style=" font-size:30px;cursor:pointer" onclick="openNav()">&#9776; NAVBAR</span>
+    <script>
+        function openNav() {
+            document.getElementById("myNav").style.width = "100%";
+        }
+
+        function closeNav() {
+            document.getElementById("myNav").style.width = "0%";
+        }
+    </script>
+    <!--===========================================================================-->
+    <!--start footer -->
+    <?php
+    include("../include/layout/footer.php");
+    ?>
+    <!--end footer -->
 </body>
 
 </html>
