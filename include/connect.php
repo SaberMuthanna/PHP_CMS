@@ -1,7 +1,7 @@
 <?php
     define("HOSTNAME", "localhost");
     define("HOST_NAME", "root");
-    define("HOST_PASS", "SSSmmm123");
+    define("HOST_PASS", "");
     define("DB_NAME","cms1");
     $conn = mysqli_connect(HOSTNAME, HOST_NAME, HOST_PASS, DB_NAME);
     if (!$conn){
